@@ -1,0 +1,49 @@
+================================================================
+=                                                              =
+=                        Instruction                           =
+=                                                              =
+================================================================
+
+1) Deploy
+2) setWallet(wallet address)
+3) setStart(presale GMT start date in UNIX format)
+4) setHardcap(max limit of invested ether in wei)
+5) setMin(min ether for single purchase in wei)
+6) setPeriod(presale period in days)
+
+explanations:
+1 eth = 1000000000000000000 wei
+GMT = Moscow time - 3 hours
+You can convert GMT date to UNIX format http://www.onlineconversion.com/unix_time.htm  
+
+During ICO:
+You should set presale contract address to ICO contract.
+When investor purchase ICO contract should call balanceOf(invesot address) from presale contract.
+
+================================================================
+=                                                              =
+=                        Demo in Kovan                         =
+=                                                              =
+================================================================
+1) Deployed from 0xb8600b335332724Df5108Fc0595002409c2ADbC6 
+
+https://kovan.etherscan.io/address/0x65c5afbba7758a966980a623f750bed5e3a51372#readContract
+
+2) setWallet(0xE619BCD3c4609AE269B5eBE5bf0cb7D1Dc70C210)
+3) setStart(1505912400)   -  Wed, 20 Sep 2017 13:00:00 GMT
+4) setHardcap(100000000000000000000) - 100 ETH
+5) setMin(50000000000000000) - 0.05 ETH
+6) setPeriod(30) - 30 days
+
+During pre sale invested:
+0x54a67F1507dEb1BFc58ba3ffa94B59fC50EB74BC - 0.1
+0x54a67F1507dEb1BFc58ba3ffa94B59fC50EB74BC - 0.3
+0xD1BC33B2c89C93E65b0D476B8b50BFee82594847 - 0.1
+
+Summary invested - 0.5 you can see in 0xE619BCD3c4609AE269B5eBE5bf0cb7D1Dc70C210
+Total investors 2
+balancOf(0x54a67F1507dEb1BFc58ba3ffa94B59fC50EB74BC) - 400000000000000000 or 0.4 ETH
+balancOf(0xD1BC33B2c89C93E65b0D476B8b50BFee82594847) - 100000000000000000 or 0.1 ETH
+
+Test successfully finished.
+

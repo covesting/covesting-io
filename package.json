@@ -1,0 +1,41 @@
+{
+  "name": "cp6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "zeppelin-solidity": "^1.2.0",
+    "babel-polyfill": "^6.0.16",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-3": "^6.17.0",
+    "babel-register": "^6.23.0",
+    "chai": "^4.0.2",
+    "chai-as-promised": "^7.0.0",
+    "chai-bignumber": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cromlehg/cp6.git"
+  },
+  "keywords": [
+    "solidity",
+    "ICO",
+    "presale",
+    "ethereum",
+    "smart-contract"
+  ],
+  "author": "Alexander Strakh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cromlehg/cp6/issues"
+  },
+  "homepage": "https://github.com/cromlehg/cp6#readme"
+}
