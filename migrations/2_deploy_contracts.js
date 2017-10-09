@@ -1,5 +1,5 @@
-var PreSale = artifacts.require("./PreSale.sol");
+var Crowdsale = artifacts.require("./Crowdsale.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(PreSale);
+  deployer.deploy(Crowdsale);
 };

@@ -1,0 +1,212 @@
+=================================================================
+=                                                               =
+=                       Main net 1                              =
+=                                                               =
+=================================================================
+
+Конфигруация среды:
+1) Конфигурация сети:
+- Main net
+- Консенсус Proof of Work
+
+2) Конфигурация контракта:
+- Кошелек создателя контракта             : 
+-- Контракт распродажи                    : Presale
+--- Кошелек для собраного эфира           :
+--- Начало                                : 20 октября 16.00 по Москве 
+--- Продолжительность                     : 30 дней
+--- Минимальная цена                      : 0.1 эфир
+--- Этапы                                 :  
+---- 1. Граница сбора:  5000 ETH, цена: 300 COV за 1 ETH   
+-- Контракт распродажи                    : Mainsale
+--- Кошелек для собраного эфира           :
+--- Кошелек для токенов основателям       : 
+--- Кошелек для токенов баунти            : 
+--- Процент токенов основателям           : 13%
+--- Порцент токенов на баунти             : 5%
+--- Период блокировки токенов основателей : 90 дней
+--- Начало                                : 24 ноября 16.00 по Москве 
+--- Продолжительность                     : 30 дней
+--- Минимальная цена                      : 0.1 эфир
+--- Этапы                                 :  
+---- 1. Граница сбора:  5000 ETH, цена: 200 COV за 1 ETH   
+---- 2. Граница сбора:  5000 ETH, цена: 180 COV за 1 ETH   
+---- 3. Граница сбора: 10000 ETH, цена: 170 COV за 1 ETH   
+---- 4. Граница сбора: 20000 ETH, цена: 160 COV за 1 ETH   
+---- 5. Граница сбора: 20000 ETH, цена: 150 COV за 1 ETH   
+---- 6. Граница сбора: 40000 ETH, цена: 130 COV за 1 ETH   
+
+3) Конфигурация контракта (выполнять с кошелька с которого заливали контракт)
+    token = new CovestingToken();
+
+    presale = new Presale();
+
+    presale.setToken(token);
+    presale.addStage(5000,300);
+    presale.setMultisigWallet(0x0);
+    presale.setStart(1508504400);
+    presale.setPeriod(30);
+    presale.setMinPrice(100000000000000000);
+    token.setSaleAgent(presale);	
+
+    mainsale = new Mainsale();
+
+    mainsale.setToken(token);
+    mainsale.addStage(5000,200);
+    mainsale.addStage(5000,180);
+    mainsale.addStage(10000,170);
+    mainsale.addStage(20000,160);
+    mainsale.addStage(20000,150);
+    mainsale.addStage(40000,130);
+    mainsale.setMultisigWallet(0x0);
+    mainsale.setFoundersTokensWallet(0x0);
+    mainsale.setBountyTokensWallet(0x0);
+    mainsale.setStart(1511528400);
+    mainsale.setPeriod(30);
+    mainsale.setLockPeriod(90);
+    mainsale.setMinPrice(100000000000000000);
+    mainsale.setFoundersTokensPercent(13);
+    mainsale.setBountyTokensPercent(5);
+
+    presale.setMainsale(mainsale);
+
+    token.transferOwnership(owner);
+    presale.transferOwnership(owner);
+    mainsale.transferOwnership(owner);
+
+  После окончания Presale вызвать 
+       finishMinting() у Presale
+  После окончания Mainsale вызвать 
+       finishMinting() у Mainsale
+
+
+==== Ссылки на конракты в блокчейн ====
+Контракт токена 
+	Ссылка  - 
+Контракт распродажи Presale: 
+	Ссылка  - 
+Контракт распродажи Mainsale: 
+	Ссылка  - 
+
+=================================================================
+=                                                               =
+=                       Ropsten test 1                          =
+=                                                               =
+=================================================================
+
+Конфигруация тестовой среды:
+1) Конфигурация сети:
+- Ropsten
+- консенсус Proof of Authority
+
+2) Конфигурация контракта:
+- Кошелек создателя контракта             : 
+-- Контракт распродажи                    : Presale
+--- Кошелек для собраного эфира           : 0x055fa3f2DAc0b9Db661A4745965DDD65490d56A8
+--- Начало                                : 5 октября 16.00 по Москве 
+--- Продолжительность                     : 2 дня
+--- Минимальная цена                      : 0.1 эфир
+--- Этапы                                 :  
+---- 1. Граница сбора:  5 ETH, цена: 300 COV за 1 ETH   
+-- Контракт распродажи                    : Mainsale
+--- Кошелек для собраного эфира           : 0x4d9014eF9C3CE5790A326775Bd9F609969d1BF4f
+--- Кошелек для токенов основателям       : 0x59b398bBED1CC6c82b337B3Bd0ad7e4dCB7d4de3
+--- Кошелек для токенов баунти            : 0x555635F2ea026ab65d7B44526539E0aB3874Ab24
+--- Процент токенов основателям           : 13%
+--- Порцент токенов на баунти             : 5%
+--- Период блокировки токенов основателей : 1 день
+--- Начало                                : 8 октября 16.00 по Москве 
+--- Продолжительность                     : 2 дня
+--- Минимальная цена                      : 0.1 эфир
+--- Этапы                                 :  
+---- 1. Граница сбора:     1 ETH, цена: 200 COV за 1 ETH   
+---- 2. Граница сбора:     2 ETH, цена: 180 COV за 1 ETH    
+
+3) Конфигурация контракта (выполнять с кошелька с которого заливали контракт)
+    token = new CovestingToken();
+
+    presale = new Presale();
+
+    presale.setToken(token);
+    presale.addStage(5,300);
+    presale.setMultisigWallet(0x055fa3f2DAc0b9Db661A4745965DDD65490d56A8);
+    presale.setStart(1507208400);
+    presale.setPeriod(2);
+    presale.setMinPrice(100000000000000000);
+    token.setSaleAgent(presale);	
+
+    mainsale = new Mainsale();
+
+    mainsale.setToken(token);
+    mainsale.addStage(1,200);
+    mainsale.addStage(2,100);
+    mainsale.setMultisigWallet(0x4d9014eF9C3CE5790A326775Bd9F609969d1BF4f);
+    mainsale.setFoundersTokensWallet(0x59b398bBED1CC6c82b337B3Bd0ad7e4dCB7d4de3);
+    mainsale.setBountyTokensWallet(0x555635F2ea026ab65d7B44526539E0aB3874Ab24);
+    mainsale.setStart(1507467600);
+    mainsale.setPeriod(2);
+    mainsale.setLockPeriod(1);
+    mainsale.setMinPrice(100000000000000000);
+    mainsale.setFoundersTokensPercent(13);
+    mainsale.setBountyTokensPercent(5);
+
+    presale.setMainsale(mainsale);
+
+    token.transferOwnership(owner);
+    presale.transferOwnership(owner);
+    mainsale.transferOwnership(owner);
+
+  После окончания Presale вызвать 
+       finishMinting() у Presale
+  После окончания Mainsale вызвать 
+       finishMinting() у Mainsale
+
+
+==== Gas used =====
+1) Deploy TestConfigurator        : 4483772
+2) Call TestConfigurator.deploy() : 3602256
+3) Presale.()                     :
+4)
+5) Presale.finishMinting()        :
+6)
+7)
+8) Mainsale.finishMinting()       :
+
+==== Ссылки на конракты в блокчейн ====
+Контракт токена - 0xD4656E578A5bFFdeD84635992025D566B9F62162
+	Ссылка  - https://kovan.etherscan.io/token/0xD4656E578A5bFFdeD84635992025D566B9F62162#readContract
+Контракт распродажи Presale: 0x7f9A3523A278398750034BD3B956c94dE9122A3c
+	Ссылка  - https://kovan.etherscan.io/address/0x7f9A3523A278398750034BD3B956c94dE9122A3c#readContract
+Контракт распродажи Mainsale: 0x936231e84acEB29Fc3C3cea3E628d57A8C0c2fC6
+	Ссылка  - https://kovan.etherscan.io/address/0x936231e84acEB29Fc3C3cea3E628d57A8C0c2fC6#readContract
+
+
+===== Результаты тестирования ====
+
+Инвестиционныее активности на presale:
+1) https://kovan.etherscan.io/tx/0x3ceb2f9e49f99c280f891c35532db295ad61902c9cbc1bb2a7e3f3ee9fde3c9a
+   Инвестор 0x2febef0708524eb19650CBB88f9AeA0c297BEB6e вложил 0.3 эфира и должен получить 0.3 * 300 = 90 COV токенов
+2) https://kovan.etherscan.io/tx/0x31432df2d5834b415587b4f054265445256faef3b3f0aa34140ca0c8aabacfbb
+   Инвестор 0x54a67F1507dEb1BFc58ba3ffa94B59fC50EB74BC вложил 0.1 эфира и должен получить 0.1 * 300 = 30 COV токенов
+
+==================================
+    
+Итого инвестировано: 0.36 + 0.2331 + 0.84783217 = 1,44093217 и должно лежатьна кошельке:
+   0x8d6dc4df99e18f07f1be6833a59c0cd48c5c1329
+
+Итого выпущено токенов без банути и доли основателей и ранних инвесторов: 360 + 780,0055604 + 186,48 = 1326,4855604
+
+Ранние инветоры (30%):
+    624            0x737d7342e8ac4a5d4961bcc9273301fd3e5dd696:  600000000000000000/1250000000000000 = 480 + 480*0.3 = 480 + 144 =  624
+    1,144          0x11a8121afbbd83a88cf97a84a86da6e6fb640b9d: 1100000000000000000/1250000000000000 = 880 + 880*0.3 = 880 + 264 = 1144
+    829.73392528   0xc3443842f8e75606cf707e5a65ce47c354be9754:  797821082000000000/1250000000000000 = 638,2568656 + 638,2568656*0.3 = 638,2568656 + 191,47705968 = 829,73395968
+    1,037.73392528 0x7fa32d9f2c7c7b9fbfea87eb43f6f1e16e0f71cb:  997821082000000000/1250000000000000 = 798,2568656 + 798,2568656*0.3 = 798,2568656 + 239,47705968 = 1037,73392528
+
+Суммарное количество токенов без банути и основателей: 1037,73392528 + 829,73395968 + 1144 + 624 + 186,48 + 780,0055604 + 360 = 4961,95344536 - должо быть в поле totalSupply на конракте токена 0xf931736065c9590eF20347E3D5fAf12c903B5cD1
+
+Доля основателей и баунти 20% + 2% = 4961,95344536*0.22 = 1091,629757979
+
+Тогда 
+
+
+ 
